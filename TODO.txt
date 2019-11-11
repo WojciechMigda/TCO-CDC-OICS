@@ -1,0 +1,8 @@
+* puscic CV dla SGD
+  unbuffer ./RUNME_chi2.py -F 6 --ncvjobs 3 -R 1 -G 5 71 62 42 55 63 60 11 73 43 70 64 53 13 66 26 12 41 99 24 31 78 27 72 51 52 44 32 23 | tee log_R_1_71--23__KBest
+
+* puscic CV dla LinearSVC
+  unbuffer ./RUNME_chi2.py -F 6 --ncvjobs 3 -R 1 -G 5 71 62 42 55 63 60 11 73 43 70 64 53 13 66 26 12 41 99 24 31 78 27 72 51 52 44 32 23 | tee log_R_1_71--23__KBest
+  u mnie 0.84551
+
+* puscic CV dla LGBM
