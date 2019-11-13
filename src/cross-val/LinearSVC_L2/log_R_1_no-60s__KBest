@@ -1,0 +1,50 @@
+{'event_sel': (71, 42, 55, 11, 73, 43, 70, 53, 13, 26, 12, 41, 99, 24, 31, 78, 27, 72, 51, 52, 44, 32, 23), 'seed': 1, 'jobs': 1, 'ngram_hi': 5, 'kbest': None, 'nreps': 1, 'ncvjobs': 3, 'nfolds': 6, 'neval': 30}
+Full TRAIN shape: (153956, 4)
+Removing whitespace.
+Removing digits.
+                                                text  sex  age  event
+1  AYOMFELLONARMWHILEWORKINGHADSLIPPEDONWATERFXWRIST    1   45     42
+2  YOMWITHCERVICALSTRAINBACKPAINSPRESTRAINEDTAXID...    1   58     26
+4  YOMATWORKINAWAREHOUSEDOINGUNSPECIFIEDLIFTINGAN...    1   53     71
+8  YOMCOBLBACKPAINSINCEFRIWORSETODAYPTLIFTSHEAVYT...    1   36     71
+9          YOFSHOULDERPAINAFTERLIFTINGAPACKAGEATWORK    2   41     71
+Vectorizing with CountVectorizer(analyzer='char', binary=True, decode_error='strict',
+        dtype=<class 'numpy.uint8'>, encoding='utf-8', input='content',
+        lowercase=True, max_df=1.0, max_features=None, min_df=1,
+        ngram_range=(2, 5), preprocessor=None, stop_words=None,
+        strip_accents=None, token_pattern='(?u)\\b\\w\\w+\\b',
+        tokenizer=None, vocabulary=None)
+TRAIN corpus vectorized
+uint8
+(103653, 389776)
+best score: 0.88479 +/- 0.00219  best params: {'C': 0.00930519014698448, 'KBest': 43000}
+best score: 0.88450 +/- 0.00220  best params: {'C': 0.010902252007995432, 'KBest': 37000}
+best score: 0.88496 +/- 0.00202  best params: {'C': 0.006291955599673562, 'KBest': 41000}
+best score: 0.88408 +/- 0.00146  best params: {'C': 0.0050729220561592705, 'KBest': 37000}
+best score: 0.88494 +/- 0.00178  best params: {'C': 0.008375413405868328, 'KBest': 41000}
+best score: 0.88436 +/- 0.00181  best params: {'C': 0.0044454045637915725, 'KBest': 47000}
+best score: 0.88499 +/- 0.00178  best params: {'C': 0.006596666688167865, 'KBest': 41000}
+best score: 0.88475 +/- 0.00202  best params: {'C': 0.007936188193153754, 'KBest': 44000}
+best score: 0.88461 +/- 0.00244  best params: {'C': 0.011516239713938559, 'KBest': 38000}
+best score: 0.88496 +/- 0.00202  best params: {'C': 0.006270646863413146, 'KBest': 41000}
+best score: 0.88465 +/- 0.00174  best params: {'C': 0.006470152436439333, 'KBest': 38000}
+best score: 0.88371 +/- 0.00142  best params: {'C': 0.004003232014917176, 'KBest': 38000}
+best score: 0.88328 +/- 0.00153  best params: {'C': 0.003984092372768576, 'KBest': 35000}
+best score: 0.88452 +/- 0.00166  best params: {'C': 0.006231519977843904, 'KBest': 38000}
+best score: 0.88432 +/- 0.00221  best params: {'C': 0.012823666981160409, 'KBest': 43000}
+best score: 0.88457 +/- 0.00172  best params: {'C': 0.004842649607853859, 'KBest': 48000}
+best score: 0.88464 +/- 0.00180  best params: {'C': 0.0064073022724130055, 'KBest': 36000}
+best score: 0.88503 +/- 0.00203  best params: {'C': 0.008016259276105964, 'KBest': 42000}
+best score: 0.88471 +/- 0.00203  best params: {'C': 0.005384981394427992, 'KBest': 48000}
+best score: 0.88462 +/- 0.00185  best params: {'C': 0.006488739888411893, 'KBest': 43000}
+best score: 0.88486 +/- 0.00207  best params: {'C': 0.00825601386510724, 'KBest': 45000}
+best score: 0.88288 +/- 0.00138  best params: {'C': 0.0031875605233618793, 'KBest': 40000}
+best score: 0.88411 +/- 0.00217  best params: {'C': 0.014720587119253734, 'KBest': 46000}
+best score: 0.88497 +/- 0.00191  best params: {'C': 0.007611862413752857, 'KBest': 40000}
+best score: 0.88476 +/- 0.00200  best params: {'C': 0.009686507914186926, 'KBest': 42000}
+best score: 0.88479 +/- 0.00184  best params: {'C': 0.007230942309929851, 'KBest': 45000}
+best score: 0.88481 +/- 0.00224  best params: {'C': 0.009681054744028784, 'KBest': 40000}
+best score: 0.88464 +/- 0.00190  best params: {'C': 0.005501351547792706, 'KBest': 42000}
+best score: 0.88488 +/- 0.00217  best params: {'C': 0.009187697010734349, 'KBest': 44000}
+best score: 0.88394 +/- 0.00235  best params: {'C': 0.014169682039148854, 'KBest': 39000}
+Final best: {'x_C': 0.008016259276105964, 'x_KBest': 42000.0}
