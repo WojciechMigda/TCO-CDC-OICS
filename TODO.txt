@@ -6,3 +6,7 @@
   u mnie 0.84551
 
 * puscic CV dla LGBM
+
+* test dla upper ngram=6
+* train.drop_duplicates(subset='text', inplace=True)
+* nowe statystyki, plus age, plec
