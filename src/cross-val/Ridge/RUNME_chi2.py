@@ -25,9 +25,9 @@ def evaluate_hyper(train_X, train_y, objective,
     space = {
 #        'C': hp.choice("x_X", [0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, 3, 10]),
 #        'alpha': hp.choice ('x_alpha', [10, 100, 1000]),
-        'alpha': hp.loguniform('x_alpha', np.log(30), np.log(1000)),
+        'alpha': hp.loguniform('x_alpha', np.log(3), np.log(300)),
 #        'solver': hp.choice ('x_solver', ['sag', 'saga']),
-        'KBest': hp.quniform ('x_KBest', 12000, 24000, 2000),
+        'KBest': hp.quniform ('x_KBest', 18000, 36000, 2000),
 #        'boost_true_positive_feedback': hp.choice("x_boost_true_positive_feedback", [0, 1]),
 #        'number_of_states': hp.quniform("x_number_of_states", states_min, states_max, states_step),
 #        'threshold': hp.quniform ('x_threshold', threshold_min, threshold_max, threshold_step),
@@ -114,7 +114,7 @@ def main(
     ngram_hi=3,
     jobs=1,
     seed=1,
-    *event_sel,
+    *event_sel
 ):
     print(locals())
     #return

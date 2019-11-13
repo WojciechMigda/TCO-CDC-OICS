@@ -3,6 +3,7 @@
 from ReadData import read_train
 from Preprocess import preprocess
 
+import numpy as np
 from sklearn.metrics import f1_score
 
 import plac
@@ -22,14 +23,8 @@ def evaluate_hyper(train_X, train_y, objective,
     from hyperopt import fmin, tpe, hp
 
     space = {
-#        'C': hp.choice("x_X", [0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, 3, 10]),
-#        'C': hp.choice("x_X", [0.003, 0.01, 0.03, 0.1, 0.3, 1]),
-        'C_exp': hp.quniform ('x_C_exp', -2.5, -1.8, 0.1),
-        'KBest': hp.quniform ('x_KBest', 12000, 24000, 2000),
-#        'boost_true_positive_feedback': hp.choice("x_boost_true_positive_feedback", [0, 1]),
-#        'number_of_states': hp.quniform("x_number_of_states", states_min, states_max, states_step),
-#        'threshold': hp.quniform ('x_threshold', threshold_min, threshold_max, threshold_step),
-#        's': hp.uniform ('x_s', s_min, s_max),
+        'C': hp.loguniform('x_C', np.log(0.003), np.log(0.015)),
+        'KBest': hp.quniform ('x_KBest', 34000, 48000, 1000),
         }
 
     from functools import partial
@@ -58,10 +53,6 @@ def hyper_objective(train_X, train_y, nfolds, ncvjobs, nreps,
         kwargs[k] = v
         pass
 
-    kwargs['C'] = 10 ** kwargs['C_exp']
-    del kwargs['C_exp']
-    #print('DEBUG: C={:.5f}'.format(kwargs['C']))
-
     from sklearn.pipeline import Pipeline
     from sklearn.feature_selection import SelectKBest, chi2
     from sklearn.svm import LinearSVC
@@ -72,7 +63,6 @@ def hyper_objective(train_X, train_y, nfolds, ncvjobs, nreps,
     else:
         nbest = nbest or train_X.shape[1]
 
-    print('KBest {}'.format(nbest))
     clf = Pipeline([
         ('kbest', SelectKBest(chi2, k=nbest)),
         ('train', LinearSVC(loss='squared_hinge', penalty='l2', dual=False, tol=1e-3, verbose=0, random_state=seed,
@@ -88,10 +78,10 @@ def hyper_objective(train_X, train_y, nfolds, ncvjobs, nreps,
         kf = StratifiedKFold(n_splits=nfolds, random_state=seed + i, shuffle=True)
         scores.extend(cross_val_score(clf, train_X, train_y, cv=kf, n_jobs=ncvjobs, scoring=scoring_w_f1))
 
-    import numpy as np
     score = np.mean(scores)
     std = np.std(scores)
 
+    kwargs['KBest'] = nbest
     print('best score: {:.5f} +/- {:.5f}  best params: {}'.format(score, std, kwargs))
     return -score
 
@@ -117,7 +107,7 @@ def main(
     ngram_hi=3,
     jobs=1,
     seed=1,
-    *event_sel,
+    *event_sel
 ):
     print(locals())
     #return

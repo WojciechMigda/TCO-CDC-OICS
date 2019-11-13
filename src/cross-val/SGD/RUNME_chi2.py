@@ -3,6 +3,7 @@
 from ReadData import read_train
 from Preprocess import preprocess
 
+import numpy as np
 from sklearn.metrics import f1_score
 
 import plac
@@ -22,15 +23,11 @@ def evaluate_hyper(train_X, train_y, objective,
     from hyperopt import fmin, tpe, hp
 
     space = {
-#        'C': hp.choice("x_X", [0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, 3, 10]),
-        'loss': hp.choice("x_loss", ['hinge', 'squared_hinge', 'log', 'modified_huber', 'perceptron']),
+#        'loss': hp.choice("x_loss", ['hinge', 'squared_hinge', 'log', 'modified_huber', 'perceptron']),
+        'loss': hp.choice("x_loss", ['hinge', 'log', 'modified_huber']),
         'penalty': hp.choice("x_penalty", ['l2', 'elasticnet']),
-        'alpha': hp.choice ('x_alpha', [1e-5, 1e-4, 1e-3]),
-        'KBest': hp.quniform ('x_KBest', 12000, 24000, 2000),
-#        'boost_true_positive_feedback': hp.choice("x_boost_true_positive_feedback", [0, 1]),
-#        'number_of_states': hp.quniform("x_number_of_states", states_min, states_max, states_step),
-#        'threshold': hp.quniform ('x_threshold', threshold_min, threshold_max, threshold_step),
-#        's': hp.uniform ('x_s', s_min, s_max),
+        'alpha': hp.loguniform('x_alpha', np.log(0.0001), np.log(0.001)),
+        'KBest': hp.quniform ('x_KBest', 34000, 48000, 1000),
         }
 
     from functools import partial
@@ -114,8 +111,8 @@ def main(
     ngram_hi=3,
     jobs=1,
     seed=1,
-    *event_sel,
-):
+    *event_sel
+    ):
     print(locals())
     #return
     #event_sel=[70, 71]

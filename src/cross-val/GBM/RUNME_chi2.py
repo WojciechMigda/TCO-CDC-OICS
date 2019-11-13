@@ -23,13 +23,14 @@ def evaluate_hyper(train_X, train_y, objective,
     import numpy as np
 
     space = {
-        'KBest': hp.quniform ('x_KBest', 12000, 24000, 2000),
-        'n_estimators': hp.quniform ('x_n_estimators', 200, 1000, 200),
+        'KBest': hp.quniform ('x_KBest', 18000, 36000, 2000),
+        'n_estimators': hp.quniform ('x_n_estimators', 200, 1200, 200),
         #'boosting_type': hp.choice('x_boosting_type', ['gbdt', 'dart', 'goss']),  # no 'rf', causes crash
         'boosting_type': hp.choice('x_boosting_type', ['gbdt']),  # no 'rf', causes crash
         'num_leaves': hp.quniform('num_leaves', 8, 128, 2),
         'colsample_bytree': hp.uniform('colsample_bytree', 0.3, 1.0),
-        'max_depth': hp.quniform('max_depth', 1, 10, 1),
+        'subsample': hp.uniform('subsample', 0.3, 1.0),
+        'max_depth': hp.quniform('max_depth', 2, 12, 1),
         "min_child_weight": hp.uniform('min_child_weight', 0.5, 10),
 
         "learning_rate": hp.uniform("learning_rate", 0.01, 0.05),
@@ -147,7 +148,7 @@ def main(
     ngram_hi=3,
     jobs=1,
     seed=1,
-    *event_sel,
+    *event_sel
 ):
     print(locals())
     #return

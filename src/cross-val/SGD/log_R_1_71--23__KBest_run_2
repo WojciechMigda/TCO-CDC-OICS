@@ -1,0 +1,50 @@
+{'ncvjobs': 6, 'jobs': 1, 'seed': 1, 'kbest': None, 'ngram_hi': 5, 'nreps': 1, 'event_sel': (71, 62, 42, 55, 63, 60, 11, 73, 43, 70, 64, 53, 13, 66, 26, 12, 41, 99, 24, 31, 78, 27, 72, 51, 52, 44, 32, 23), 'neval': 30, 'nfolds': 6}
+Full TRAIN shape: (153956, 4)
+Removing whitespace.
+Removing digits.
+                                                text  sex  age  event
+0  YOMWITHCONTUSIONTOFACEAFTERSTRIKINGITWITHAPOST...    1   57     62
+1  AYOMFELLONARMWHILEWORKINGHADSLIPPEDONWATERFXWRIST    1   45     42
+2  YOMWITHCERVICALSTRAINBACKPAINSPRESTRAINEDTAXID...    1   58     26
+3                        YOMLACTOHANDFROMARAZORKNIFE    1   33     60
+4  YOMATWORKINAWAREHOUSEDOINGUNSPECIFIEDLIFTINGAN...    1   53     71
+Vectorizing with CountVectorizer(analyzer='char', binary=True, decode_error='strict',
+                dtype=<class 'numpy.uint8'>, encoding='utf-8', input='content',
+                lowercase=True, max_df=1.0, max_features=None, min_df=1,
+                ngram_range=(2, 5), preprocessor=None, stop_words=None,
+                strip_accents=None, token_pattern='(?u)\\b\\w\\w+\\b',
+                tokenizer=None, vocabulary=None)
+TRAIN corpus vectorized
+uint8
+(153349, 449021)
+best score: 0.82871 +/- 0.00118  best params: {'loss': 'modified_huber', 'alpha': 0.0001, 'KBest': 18000, 'penalty': 'elasticnet'}
+best score: 0.84156 +/- 0.00159  best params: {'loss': 'hinge', 'alpha': 0.0005, 'KBest': 24000, 'penalty': 'l2'}
+best score: 0.82755 +/- 0.00308  best params: {'loss': 'log', 'alpha': 1e-05, 'KBest': 26000, 'penalty': 'elasticnet'}
+best score: 0.83899 +/- 0.00237  best params: {'loss': 'modified_huber', 'alpha': 0.0005, 'KBest': 28000, 'penalty': 'l2'}
+best score: 0.84050 +/- 0.00164  best params: {'loss': 'log', 'alpha': 0.0001, 'KBest': 22000, 'penalty': 'l2'}
+best score: 0.83935 +/- 0.00149  best params: {'loss': 'hinge', 'alpha': 0.001, 'KBest': 34000, 'penalty': 'l2'}
+best score: 0.84156 +/- 0.00159  best params: {'loss': 'hinge', 'alpha': 0.0005, 'KBest': 24000, 'penalty': 'l2'}
+best score: 0.80913 +/- 0.00264  best params: {'loss': 'modified_huber', 'alpha': 1e-05, 'KBest': 26000, 'penalty': 'l2'}
+best score: 0.84156 +/- 0.00159  best params: {'loss': 'hinge', 'alpha': 0.0005, 'KBest': 24000, 'penalty': 'l2'}
+best score: 0.84050 +/- 0.00164  best params: {'loss': 'log', 'alpha': 0.0001, 'KBest': 22000, 'penalty': 'l2'}
+best score: 0.84182 +/- 0.00162  best params: {'loss': 'hinge', 'alpha': 0.0005, 'KBest': 26000, 'penalty': 'l2'}
+best score: 0.83829 +/- 0.00251  best params: {'loss': 'hinge', 'alpha': 0.0001, 'KBest': 34000, 'penalty': 'l2'}
+best score: 0.80498 +/- 0.00162  best params: {'loss': 'hinge', 'alpha': 0.001, 'KBest': 22000, 'penalty': 'elasticnet'}
+best score: 0.83885 +/- 0.00250  best params: {'loss': 'log', 'alpha': 5e-05, 'KBest': 26000, 'penalty': 'l2'}
+best score: 0.84230 +/- 0.00190  best params: {'loss': 'log', 'alpha': 0.0001, 'KBest': 32000, 'penalty': 'l2'}
+best score: 0.83883 +/- 0.00203  best params: {'loss': 'log', 'alpha': 5e-05, 'KBest': 28000, 'penalty': 'l2'}
+best score: 0.83749 +/- 0.00191  best params: {'loss': 'log', 'alpha': 5e-05, 'KBest': 22000, 'penalty': 'l2'}
+best score: 0.83149 +/- 0.00122  best params: {'loss': 'modified_huber', 'alpha': 0.001, 'KBest': 24000, 'penalty': 'elasticnet'}
+best score: 0.79386 +/- 0.00198  best params: {'loss': 'log', 'alpha': 0.001, 'KBest': 36000, 'penalty': 'elasticnet'}
+best score: 0.82646 +/- 0.00165  best params: {'loss': 'log', 'alpha': 0.001, 'KBest': 28000, 'penalty': 'l2'}
+best score: 0.83797 +/- 0.00255  best params: {'loss': 'hinge', 'alpha': 0.0001, 'KBest': 32000, 'penalty': 'l2'}
+best score: 0.84279 +/- 0.00144  best params: {'loss': 'hinge', 'alpha': 0.0005, 'KBest': 30000, 'penalty': 'l2'}
+best score: 0.84279 +/- 0.00144  best params: {'loss': 'hinge', 'alpha': 0.0005, 'KBest': 30000, 'penalty': 'l2'}
+best score: 0.84279 +/- 0.00144  best params: {'loss': 'hinge', 'alpha': 0.0005, 'KBest': 30000, 'penalty': 'l2'}
+best score: 0.82364 +/- 0.00186  best params: {'loss': 'hinge', 'alpha': 0.0005, 'KBest': 30000, 'penalty': 'elasticnet'}
+best score: 0.84279 +/- 0.00144  best params: {'loss': 'hinge', 'alpha': 0.0005, 'KBest': 30000, 'penalty': 'l2'}
+best score: 0.84305 +/- 0.00177  best params: {'loss': 'hinge', 'alpha': 0.0005, 'KBest': 32000, 'penalty': 'l2'}
+best score: 0.81900 +/- 0.00376  best params: {'loss': 'hinge', 'alpha': 1e-05, 'KBest': 36000, 'penalty': 'l2'}
+best score: 0.84055 +/- 0.00178  best params: {'loss': 'modified_huber', 'alpha': 0.0005, 'KBest': 32000, 'penalty': 'elasticnet'}
+best score: 0.84355 +/- 0.00200  best params: {'loss': 'hinge', 'alpha': 0.0005, 'KBest': 34000, 'penalty': 'l2'}
+Final best: {'x_KBest': 34000.0, 'x_loss': 0, 'x_penalty': 0, 'x_alpha': 3}
