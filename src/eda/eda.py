@@ -9,6 +9,7 @@ def read_train():
     import pandas as pd
 
     df = pd.read_csv('../../data/train.csv')
+    df.drop_duplicates(subset='text', inplace=True)
     print('Full TRAIN shape: {}'.format(df.shape))
 
     return df
