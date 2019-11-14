@@ -54,4 +54,4 @@ def preprocess(df,
     #print('TRAIN indices sorted')
     print(X_train.shape)
 
-    return X_train, df['event'].values
+    return X_train, df['event'].values if 'event' in df else None
