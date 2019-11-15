@@ -1,0 +1,27 @@
+{'ncvjobs': 1, 'neval': 30, 'kbest': None, 'seed': 1, 'event_sel': (71, 62, 42, 55, 63, 60, 11, 73, 43, 70, 64, 53, 13, 66, 26, 12, 41, 99, 24, 31, 78, 27, 72, 51, 52, 44, 32, 23), 'nfolds': 6, 'nreps': 1, 'jobs': 1, 'ngram_hi': 5}
+Full TRAIN shape: (153956, 4)
+Removing whitespace.
+Removing digits.
+                                                text  sex  age  event
+0  YOMWITHCONTUSIONTOFACEAFTERSTRIKINGITWITHAPOST...    1   57     62
+1  AYOMFELLONARMWHILEWORKINGHADSLIPPEDONWATERFXWRIST    1   45     42
+2  YOMWITHCERVICALSTRAINBACKPAINSPRESTRAINEDTAXID...    1   58     26
+3                        YOMLACTOHANDFROMARAZORKNIFE    1   33     60
+4  YOMATWORKINAWAREHOUSEDOINGUNSPECIFIEDLIFTINGAN...    1   53     71
+Vectorizing with CountVectorizer(analyzer='char', binary=True, decode_error='strict',
+                dtype=<class 'numpy.uint8'>, encoding='utf-8', input='content',
+                lowercase=True, max_df=1.0, max_features=None, min_df=1,
+                ngram_range=(2, 5), preprocessor=None, stop_words=None,
+                strip_accents=None, token_pattern='(?u)\\b\\w\\w+\\b',
+                tokenizer=None, vocabulary=None)
+TRAIN corpus vectorized
+uint8
+(153349, 449021)
+best score: 0.82209 +/- 0.00135  best params: {'KBest': 28000, 'n_estimators': 600, 'colsample_bytree': 0.48867784096676603, 'subsample': 0.9529804495328627, 'learning_rate': 0.025163410150324826, 'max_depth': 5, 'num_leaves': 16, 'boosting_type': 'gbdt', 'min_child_weight': 5.685525737375356}
+best score: 0.83293 +/- 0.00106  best params: {'KBest': 20000, 'n_estimators': 600, 'colsample_bytree': 0.8992207919043906, 'subsample': 0.9464876725773406, 'learning_rate': 0.03293019760905504, 'max_depth': 6, 'num_leaves': 22, 'boosting_type': 'gbdt', 'min_child_weight': 7.605975916495124}
+best score: 0.84406 +/- 0.00092  best params: {'KBest': 22000, 'n_estimators': 600, 'colsample_bytree': 0.7789333711900426, 'subsample': 0.5407206385393276, 'learning_rate': 0.03891426946327472, 'max_depth': 9, 'num_leaves': 68, 'boosting_type': 'gbdt', 'min_child_weight': 7.377988795227123}
+best score: 0.84221 +/- 0.00209  best params: {'KBest': 36000, 'n_estimators': 400, 'colsample_bytree': 0.8117514048270202, 'subsample': 0.556721859607821, 'learning_rate': 0.04494641418283922, 'max_depth': 9, 'num_leaves': 118, 'boosting_type': 'gbdt', 'min_child_weight': 5.072622164215286}
+best score: 0.83315 +/- 0.00103  best params: {'KBest': 20000, 'n_estimators': 400, 'colsample_bytree': 0.6041995361180659, 'subsample': 0.7270868960548733, 'learning_rate': 0.035719658980319174, 'max_depth': 7, 'num_leaves': 98, 'boosting_type': 'gbdt', 'min_child_weight': 6.161474207260326}
+best score: 0.78924 +/- 0.00125  best params: {'KBest': 30000, 'n_estimators': 600, 'colsample_bytree': 0.5054156696634823, 'subsample': 0.7265213081633957, 'learning_rate': 0.04074489458142173, 'max_depth': 2, 'num_leaves': 116, 'boosting_type': 'gbdt', 'min_child_weight': 4.136639698298872}
+best score: 0.83287 +/- 0.00073  best params: {'KBest': 30000, 'n_estimators': 800, 'colsample_bytree': 0.8978568118727084, 'subsample': 0.37255484985299697, 'learning_rate': 0.030713696195840218, 'max_depth': 5, 'num_leaves': 122, 'boosting_type': 'gbdt', 'min_child_weight': 9.76980277397467}
+best score: 0.81324 +/- 0.00150  best params: {'KBest': 36000, 'n_estimators': 400, 'colsample_bytree': 0.3456481042707258, 'subsample': 0.8102028609662857, 'learning_rate': 0.013236103779783242, 'max_depth': 8, 'num_leaves': 100, 'boosting_type': 'gbdt', 'min_child_weight': 6.061430603492932}
