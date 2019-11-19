@@ -56,7 +56,7 @@ def train(df, y, seed, kbest, C, ngram_hi):
             ])
         ),
         ('kbest', SelectKBest(chi2, k=kbest)),
-        ('classifier', LinearSVC(loss='squared_hinge', penalty='l2', dual=False, tol=1e-4, verbose=1, random_state=seed, C=C))
+        ('classifier', LinearSVC(loss='squared_hinge', penalty='l2', dual=False, tol=1e-2, verbose=1, random_state=seed, C=C))
     ])
     print(clf)
     print('-' * 80)
@@ -141,7 +141,7 @@ def train_all(df, seed, ngram_hi=5):
 
 
 @plac.annotations(
-    ifname=("Input training data CSV file", "positional", None, str),
+    ifname=("Input inference data CSV file", "positional", None, str),
 )
 def main(ifname, seed=1):
     print(locals())
@@ -149,15 +149,41 @@ def main(ifname, seed=1):
     with open(ifname, "rt") as ifile:
         df = pd.read_csv(ifile)
         print('Read input data file <{}>, {}'.format(ifname, df.shape))
-        print('Removing \'text\' duplicates')
-        df.drop_duplicates(subset='text', inplace=True)
         print(df.head())
         print()
 
-        models = train_all(df, seed)
+        clf = joblib.load('clf_root.joblib')
+        yhat = clf.predict(df)
 
-        for ofname, clf in models.items():
-            joblib.dump(clf, ofname)
+        yhat[yhat == 9] = 99
+
+        mask = yhat == 7
+        clf = joblib.load('clf_70.joblib')
+        yhat[mask] = clf.predict(df[mask])
+
+        mask = yhat == 6
+        clf = joblib.load('clf_60.joblib')
+        yhat[mask] = clf.predict(df[mask])
+
+        mask = yhat == 4
+        clf = joblib.load('clf_40.joblib')
+        yhat[mask] = clf.predict(df[mask])
+
+        mask = yhat == 5
+        clf = joblib.load('clf_50.joblib')
+        yhat[mask] = clf.predict(df[mask])
+
+        mask = yhat == 1
+        clf = joblib.load('clf_10.joblib')
+        yhat[mask] = clf.predict(df[mask])
+
+        mask = (yhat == 2) | (yhat == 3)
+        clf = joblib.load('clf_23.joblib')
+        yhat[mask] = clf.predict(df[mask])
+
+        df['event'] = yhat
+        df.to_csv('solution.csv', index=False)
+
 
 if __name__ == "__main__":
     plac.call(main)
