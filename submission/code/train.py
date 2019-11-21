@@ -156,8 +156,11 @@ def main(ifname, seed=1):
 
         models = train_all(df, seed)
 
+        print("Saving models..")
         for ofname, clf in models.items():
+            print("... {}".format(ofname))
             joblib.dump(clf, ofname)
+            print('    DONE!')
 
 if __name__ == "__main__":
     plac.call(main)

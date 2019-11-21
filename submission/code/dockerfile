@@ -1,0 +1,17 @@
+FROM python:3
+
+RUN pip install --upgrade pip setuptools cython numpy==1.17.4
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Create a /work directory within the container, copy everything from the
+# build directory and switch there.
+RUN mkdir /work
+COPY . /work
+WORKDIR /work
+
+# Again, test and train scripts should be executable within the container.
+RUN chmod +x test.sh
+RUN chmod +x train.sh
+
+CMD /bin/sh

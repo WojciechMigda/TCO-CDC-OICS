@@ -142,8 +142,9 @@ def train_all(df, seed, ngram_hi=5):
 
 @plac.annotations(
     ifname=("Input inference data CSV file", "positional", None, str),
+    ofname=("Output inference data CSV file", "positional", None, str),
 )
-def main(ifname, seed=1):
+def main(ifname, ofname):
     print(locals())
 
     with open(ifname, "rt") as ifile:
@@ -152,37 +153,45 @@ def main(ifname, seed=1):
         print(df.head())
         print()
 
+        print('Predicting root event labels')
         clf = joblib.load('clf_root.joblib')
         yhat = clf.predict(df)
 
         yhat[yhat == 9] = 99
 
+        print('Predicting 70s event labels')
         mask = yhat == 7
         clf = joblib.load('clf_70.joblib')
         yhat[mask] = clf.predict(df[mask])
 
+        print('Predicting 60s event labels')
         mask = yhat == 6
         clf = joblib.load('clf_60.joblib')
         yhat[mask] = clf.predict(df[mask])
 
+        print('Predicting 40s event labels')
         mask = yhat == 4
         clf = joblib.load('clf_40.joblib')
         yhat[mask] = clf.predict(df[mask])
 
+        print('Predicting 50s event labels')
         mask = yhat == 5
         clf = joblib.load('clf_50.joblib')
         yhat[mask] = clf.predict(df[mask])
 
+        print('Predicting 10s event labels')
         mask = yhat == 1
         clf = joblib.load('clf_10.joblib')
         yhat[mask] = clf.predict(df[mask])
 
+        print('Predicting 20s/30s event labels')
         mask = (yhat == 2) | (yhat == 3)
         clf = joblib.load('clf_23.joblib')
         yhat[mask] = clf.predict(df[mask])
 
+        print('Saving inference results to CSV file')
         df['event'] = yhat
-        df.to_csv('solution.csv', index=False)
+        df.to_csv(ofname, index=False)
 
 
 if __name__ == "__main__":
